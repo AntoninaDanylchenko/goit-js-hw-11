@@ -1,0 +1,28 @@
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+}
+
+.photo-card {
+    width: calc((100% - 60px) / 4);
+}
+
+img {
+    display: inline-block;
+    width: 100%;
+}
+
+.info {
+    display: flex;
+    gap: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.info-item {
+    display: flex;
+    width: calc((100% - 30px) / 4);
+    flex-direction: column;
+}
