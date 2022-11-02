@@ -1,4 +1,3 @@
-import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import PixabayApiService from './js/loadImgService';
 import renderCardImg from './template/newImg.hbs';
 
@@ -17,6 +16,7 @@ function onBtnSearchClick(e) {
 
   pixabayApiService.searchQueryF = e.currentTarget.elements.searchQuery.value;
   pixabayApiService.resetPage();
+  refs.galleryEl.innerHTML = '';
   pixabayApiService.axiosImg().then(rendersAllCards);
 }
 
@@ -24,10 +24,6 @@ function onLoadMoreDtnClick(e) {
   e.preventDefault();
   pixabayApiService.axiosImg().then(rendersAllCards);
 }
-
-Notify.failure(
-  'Sorry, there are no images matching your search query. Please try again.'
-);
 
 function rendersAllCards(array) {
   refs.galleryEl.insertAdjacentHTML('beforeend', renderCardImg(array));

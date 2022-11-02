@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 export default class PixabayApiService {
   constructor() {
     this.searchQuery = '';
@@ -15,11 +16,12 @@ export default class PixabayApiService {
         orientation: 'horizontal',
         safesearch: true,
         per_page: 40,
-        page: this.paddingPage,
+        page: this.paginationPage,
       },
     })
       .then(r => {
-        this.incrementPage;
+        this.addsNotification(r.data.totalHits);
+        this.incrementPage();
         return r.data.hits;
       })
       .catch(e => console.error(e));
@@ -31,6 +33,19 @@ export default class PixabayApiService {
 
   resetPage() {
     this.paginationPage = 1;
+  }
+
+  addsNotification(value) {
+    if (this.paginationPage === 1 && value !== 0) {
+      Notify.success(`Hooray! We found ${value} images.`);
+    }
+    if (value === 0) {
+      Notify.failure(
+        'Sorry, there are no images matching your search query. Please try again.'
+      );
+    } else if (Math.floor(value / 40) + 1 < this.paginationPage) {
+      Notify.info("We're sorry, but you've reached the end of search results.");
+    }
   }
 
   get searchQueryF() {
