@@ -1,8 +1,9 @@
 import axios from 'axios';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
+
 export default class PixabayApiService {
   constructor() {
-    this.searchQuery = '';
+    this.searchQueryW = '';
     this.paginationPage = 1;
   }
 
@@ -11,7 +12,7 @@ export default class PixabayApiService {
       url: 'https://pixabay.com/api/',
       params: {
         key: '30996005-ea40810ea94cfe1a7fe206b35',
-        q: this.searchQuery,
+        q: this.searchQueryW,
         image_type: 'photo',
         orientation: 'horizontal',
         safesearch: true,
