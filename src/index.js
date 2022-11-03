@@ -15,7 +15,7 @@ refs.loadMoreBtn.addEventListener('click', onLoadMoreDtnClick);
 function onBtnSearchClick(e) {
   e.preventDefault();
 
-  pixabayApiService.searchQueryW = e.currentTarget.searchQuery.value;
+  pixabayApiService.searchQueryW = e.currentTarget.searchQueryName.value;
   pixabayApiService.resetPage();
   refs.galleryEl.innerHTML = '';
   pixabayApiService.fetchingAxiosImg().then(rendersAllCards);
