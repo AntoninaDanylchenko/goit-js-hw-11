@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import { Notify } from 'notiflix';
 
 export default class PixabayApiService {
   constructor() {

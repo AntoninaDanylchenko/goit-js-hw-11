@@ -1,12 +1,12 @@
 import PixabayApiService from './js/loadImgService';
 import renderCardImg from './template/newImg.hbs';
-import axios from 'axios';
 
 const refs = {
   searchFormEl: document.getElementById('search-form'),
   galleryEl: document.querySelector('.gallery'),
   loadMoreBtn: document.querySelector('.load-more'),
 };
+
 const pixabayApiService = new PixabayApiService();
 
 refs.searchFormEl.addEventListener('submit', onBtnSearchClick);
@@ -15,7 +15,8 @@ refs.loadMoreBtn.addEventListener('click', onLoadMoreDtnClick);
 function onBtnSearchClick(e) {
   e.preventDefault();
 
-  pixabayApiService.searchQueryW = e.currentTarget.searchQueryName.value;
+  pixabayApiService.searchQueryW =
+    e.currentTarget.elements.searchQueryName.value;
   pixabayApiService.resetPage();
   refs.galleryEl.innerHTML = '';
   pixabayApiService.fetchingAxiosImg().then(rendersAllCards);
