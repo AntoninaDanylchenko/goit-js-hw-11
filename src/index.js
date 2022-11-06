@@ -1,29 +1,38 @@
 import PixabayApiService from './js/loadImgService';
 import renderCardImg from './template/newImg.hbs';
+// import { SimpleLightbox } from 'simplelightbox';
+// import 'simplelightbox/dist/simple-lightbox.min.css';
 
 const refs = {
   searchFormEl: document.getElementById('search-form'),
   galleryEl: document.querySelector('.gallery'),
-  loadMoreBtn: document.querySelector('.load-more'),
 };
 
 const pixabayApiService = new PixabayApiService();
 
 refs.searchFormEl.addEventListener('submit', onBtnSearchClick);
-refs.loadMoreBtn.addEventListener('click', onLoadMoreDtnClick);
+
+window.addEventListener('scroll', () => {
+  if (
+    window.scrollY + window.innerHeight >=
+    document.documentElement.scrollHeight
+  ) {
+    loadMoreImg();
+  }
+});
 
 function onBtnSearchClick(e) {
   e.preventDefault();
 
   pixabayApiService.searchQueryW =
     e.currentTarget.elements.searchQueryName.value;
+
   pixabayApiService.resetPage();
   refs.galleryEl.innerHTML = '';
-  pixabayApiService.fetchingAxiosImg().then(rendersAllCards);
-}
 
-function onLoadMoreDtnClick(e) {
-  e.preventDefault();
+  loadMoreImg();
+}
+function loadMoreImg() {
   pixabayApiService.fetchingAxiosImg().then(rendersAllCards);
 }
 
