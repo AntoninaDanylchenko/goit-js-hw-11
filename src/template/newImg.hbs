@@ -1,10 +1,6 @@
 {{#each this}}
   <div class='photo-card'>
-    <a
-      class='gallery__link'
-      href={{largeImageURL}}
-      onclick='event.preventDefault()'
-    >
+    <a class='gallery__link' href={{largeImageURL}}>
       <img src={{webformatURL}} alt={{id}} loading='lazy' />
     </a>
     <div class='info'>
