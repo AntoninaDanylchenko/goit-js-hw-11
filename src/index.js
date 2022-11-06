@@ -1,6 +1,6 @@
 import PixabayApiService from './js/loadImgService';
 import renderCardImg from './template/newImg.hbs';
-import { SimpleLightbox } from 'simplelightbox';
+import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 
 const refs = {
