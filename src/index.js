@@ -13,6 +13,11 @@ const pixabayApiService = new PixabayApiService();
 refs.searchFormEl.addEventListener('submit', onBtnSearchClick);
 
 window.addEventListener('scroll', () => {
+  window.scrollBy({
+    top: 300,
+    behavior: 'smooth',
+  });
+
   if (
     window.scrollY + window.innerHeight >=
     document.documentElement.scrollHeight
