@@ -1,7 +1,7 @@
 import PixabayApiService from './js/loadImgService';
 import renderCardImg from './template/newImg.hbs';
-// import { SimpleLightbox } from 'simplelightbox';
-// import 'simplelightbox/dist/simple-lightbox.min.css';
+import { SimpleLightbox } from 'simplelightbox';
+import 'simplelightbox/dist/simple-lightbox.min.css';
 
 const refs = {
   searchFormEl: document.getElementById('search-form'),
@@ -12,17 +12,15 @@ const pixabayApiService = new PixabayApiService();
 
 refs.searchFormEl.addEventListener('submit', onBtnSearchClick);
 
-window.addEventListener('scroll', () => {
-  window.scrollBy({
-    top: 300,
-    behavior: 'smooth',
-  });
+const simple = new SimpleLightbox('.gallery a');
 
+window.addEventListener('scroll', () => {
   if (
     window.scrollY + window.innerHeight >=
     document.documentElement.scrollHeight
   ) {
     loadMoreImg();
+    simple.refresh();
   }
 });
 
