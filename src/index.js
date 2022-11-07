@@ -34,8 +34,14 @@ function onBtnSearchClick(e) {
 
   loadMoreImg();
 }
-function loadMoreImg() {
-  pixabayApiService.fetchingAxiosImg().then(rendersAllCards);
+
+async function loadMoreImg() {
+  try {
+    const response = await pixabayApiService.fetchingAxiosImg();
+    return rendersAllCards(response);
+  } catch (error) {
+    console.log(error.message);
+  }
 }
 
 function rendersAllCards(array) {
