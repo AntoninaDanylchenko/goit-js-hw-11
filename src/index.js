@@ -1,5 +1,6 @@
 import PixabayApiService from './js/loadImgService';
 import renderCardImg from './template/newImg.hbs';
+
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 
@@ -11,8 +12,6 @@ const refs = {
 const pixabayApiService = new PixabayApiService();
 
 refs.searchFormEl.addEventListener('submit', onBtnSearchClick);
-
-const simple = new SimpleLightbox('.gallery a');
 
 window.addEventListener('scroll', () => {
   if (
