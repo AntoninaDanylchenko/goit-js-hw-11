@@ -8,6 +8,7 @@ const refs = {
   searchFormEl: document.getElementById('search-form'),
   galleryEl: document.querySelector('.gallery'),
 };
+const simple = new SimpleLightbox('.gallery a');
 
 const pixabayApiService = new PixabayApiService();
 
@@ -19,7 +20,6 @@ window.addEventListener('scroll', () => {
     document.documentElement.scrollHeight
   ) {
     loadMoreImg();
-    simple.refresh();
   }
 });
 
@@ -40,4 +40,5 @@ function loadMoreImg() {
 
 function rendersAllCards(array) {
   refs.galleryEl.insertAdjacentHTML('beforeend', renderCardImg(array));
+  simple.refresh();
 }
