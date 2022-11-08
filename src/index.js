@@ -47,4 +47,12 @@ async function loadMoreImg() {
 function rendersAllCards(array) {
   refs.galleryEl.insertAdjacentHTML('beforeend', renderCardImg(array));
   simple.refresh();
+  // const { height: cardHeight } = document
+  //   .querySelector('.gallery')
+  //   .firstElementChild.getBoundingClientRect();
+  // console.log(cardHeight);
+  // window.scrollBy({
+  //   top: cardHeight,
+  //   behavior: 'smooth',
+  // });
 }
